@@ -1,5 +1,5 @@
+<h1><%=@cuisine.name%></h1>
 <% if @recipes.any? %>
-  <h1><%=@cuisine.name%></h1>
   <% @recipes.each do |recipe| %>
     <h1><%=recipe.title%></h1>
     <ul>
