@@ -24,8 +24,13 @@ class RecipesController < ApplicationController
     #@recipe.ingredients = params[:recipe][:ingredients]
     #@recipe.method = params[:recipe][:method]
 
-    @recipe.save
+    if @recipe.save
+      redirect_to recipe_path(@recipe.id)
+    else
+      flash[:notice] = 'Você deve informar todos os dados da receita'
+      render :new
+    end
 
-    redirect_to recipe_path(@recipe.id)
+
   end
 end
