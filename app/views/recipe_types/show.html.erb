@@ -1,0 +1,14 @@
+<h1><%= @recipe_types.name %>
+<%if @recipe_types.recipes.any? %>
+  <% @recipe_types.recipes.each do |recipe| %>
+    <h1><%= recipe.title %></h1>
+    <ul>
+      <li><%= recipe.recipe_type.name %></li>
+      <li><%= recipe.cuisine.name %></li>
+      <li><%= recipe.difficulty %></li>
+      <li><%= recipe.cook_time %> minutos</li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>Nenhuma receita encontrada para este tipo de receitas</p>  
+<% end %>
