@@ -30,7 +30,20 @@ class RecipesController < ApplicationController
       flash[:notice] = 'Você deve informar todos os dados da receita'
       render :new
     end
+  end
 
+  def edit
+    id = params[:id]
+    @recipe = Recipe.find(id)
+  end
 
+  def update
+    id = params[:id]
+    recipe_params = params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id,
+      :cook_time, :ingredients, :method, :difficulty)
+    recipe = Recipe.find(id)
+    recipe.update(recipe_params)
+
+    redirect_to recipe_path recipe
   end
 end
