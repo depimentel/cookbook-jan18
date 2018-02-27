@@ -18,4 +18,16 @@ feature 'User register cuisine' do
 
     expect(page).to have_content('Você deve informar o nome da cozinha')
   end
+
+  scenario 'and already exists a cousine with the same name' do
+    Cuisine.create(name: 'Japonesa')
+
+    visit root_path
+    click_on 'Cadastrar nova cozinha'
+
+    fill_in 'Nome', with: 'Japonesa'
+    click_on 'Enviar'
+
+    expect(page).to have_css('p', text: 'Já existe uma cozinha cadastrada com o mesmo nome!')
+  end
 end
