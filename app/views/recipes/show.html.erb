@@ -12,5 +12,8 @@
 <div>
   <%= link_to 'Editar Receita', edit_recipe_path(@recipe.id) %>
 </div>
+<div>
+  <%= link_to 'Excluir Receita', @recipe, method: :delete%>
+</div>
 
 <%= link_to 'Voltar', root_path %>

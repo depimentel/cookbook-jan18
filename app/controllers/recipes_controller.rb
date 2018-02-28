@@ -1,7 +1,12 @@
 class RecipesController < ApplicationController
   def show
     id = params[:id]
-    @recipe = Recipe.find(id)
+    @recipe = Recipe.find_by id: id
+
+    if @recipe.nil?
+      flash[:alert] = 'Receita não encontrada'
+      redirect_to root_path
+    end
   end
 
   def new
@@ -46,4 +51,14 @@ class RecipesController < ApplicationController
 
     redirect_to recipe_path recipe
   end
+
+  def destroy
+    id = params[:id]
+    recipe = Recipe.find(id)
+
+    recipe.delete
+
+    redirect_to root_path
+  end
+
 end
