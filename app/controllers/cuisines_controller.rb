@@ -19,4 +19,20 @@ class CuisinesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @cuisine = Cuisine.find(params[:id])
+  end
+
+  def update
+    @cuisine = Cuisine.find(params[:id])
+    name_param = params.require(:cuisine).permit(:name)
+
+    if @cuisine.update(name_param)
+      redirect_to root_path
+    else
+      #flash[:notice] = 'Você deve informar o nome da cozinha'
+      render :edit
+    end
+  end
 end

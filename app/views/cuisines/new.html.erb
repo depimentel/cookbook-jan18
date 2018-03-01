@@ -2,11 +2,4 @@
 <% @cuisine.errors.full_messages.each do |error|%>
   <p><%= error %></p>
 <% end%>
-<%= form_for @cuisine do |f| %>
-  <div>
-    <%= f.label :name, 'Nome' %>
-    <%= f.text_field :name %>
-  </div>
-  <p><%= flash[:notice] %></p>
-  <%= f.submit 'Enviar' %>
-<% end %>
+<%= render partial: "form", locals: { cuisine: @cuisine, button_name: 'Enviar'} %>

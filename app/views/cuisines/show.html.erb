@@ -9,6 +9,7 @@
       <li><%=recipe.cook_time%> minutos</li>
     </ul>
   <%end%>
-  <% else %>
+<% else %>
     Nenhuma receita encontrada para este tipo de cozinha
-  <% end %>
+<% end %>
+<%= link_to 'Editar', edit_cuisine_path(@cuisine.id) %>

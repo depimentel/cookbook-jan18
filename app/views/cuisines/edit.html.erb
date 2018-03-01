@@ -1,0 +1,5 @@
+<h1>Editar Cozinha</h1>
+<% @cuisine.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+<%= render  partial: "form", locals: { button_name: 'Salvar'} %>

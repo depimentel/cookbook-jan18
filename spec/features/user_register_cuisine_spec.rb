@@ -19,7 +19,7 @@ feature 'User register cuisine' do
     expect(page).to have_content('Você deve informar o nome da cozinha')
   end
 
-  scenario 'and already exists a cousine with the same name' do
+  scenario 'and already exists a cuisine with the same name' do
     Cuisine.create(name: 'Japonesa')
 
     visit root_path
