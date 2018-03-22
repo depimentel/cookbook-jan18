@@ -1,0 +1,34 @@
+<h1>CookBook</h1>
+<p>Bem-vindo ao maior livro de receitas online</p>
+
+<%=link_to "Enviar uma receita", new_recipe_path%>
+</br>
+<%=link_to "Cadastrar uma cozinha", new_cuisine_path%>
+</br>
+<div>
+  <%count = 0%>
+  Cozinhas:
+  <% @cuisines.each do |cuisine| %>
+    <%= link_to cuisine.name, cuisine_path(cuisine.id) %>
+    <%= " | " if @cuisines.count > count+= 1 %>
+  <% end %>
+</div>
+</br>
+<div>
+  <%count = 0%>
+  Tipo de Receitas:
+  <% @recipe_types.each do |recipe_type| %>
+    <%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %>
+    <%= " | " if @recipe_types.count > count+= 1 %>
+  <% end %>
+</div>
+
+<%@recipes.each do |recipe|%>
+  <h1><%=link_to(recipe.title, recipe_path(recipe.id))%></h1>
+  <ul>
+    <li><%=recipe.recipe_type.name%></li>
+    <li><%=recipe.cuisine.name%></li>
+    <li><%=recipe.difficulty%></li>
+    <li><%=recipe.cook_time%> minutos</li>
+  </ul>
+<%end%>
